@@ -18,6 +18,8 @@
 		2516703428D00C36005D8593 /* TwitterXUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2516703328D00C36005D8593 /* TwitterXUITestsLaunchTests.swift */; };
 		2516704128D00D38005D8593 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2516704028D00D38005D8593 /* .gitignore */; };
 		25BDC09F28D012B200B48DB4 /* TwitterXAuthentication.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 25BDC09D28D012B200B48DB4 /* TwitterXAuthentication.xcdatamodeld */; };
+		25BDC0A328D0171800B48DB4 /* DBHelperAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDC0A228D0171800B48DB4 /* DBHelperAuthentication.swift */; };
+		25BDC0A728D02C5A00B48DB4 /* TimeStamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDC0A628D02C5A00B48DB4 /* TimeStamp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		2516703328D00C36005D8593 /* TwitterXUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterXUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2516704028D00D38005D8593 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		25BDC09E28D012B200B48DB4 /* TwitterXAuthentication.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TwitterXAuthentication.xcdatamodel; sourceTree = "<group>"; };
+		25BDC0A228D0171800B48DB4 /* DBHelperAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelperAuthentication.swift; sourceTree = "<group>"; };
+		25BDC0A628D02C5A00B48DB4 /* TimeStamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStamp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				2516701128D00C35005D8593 /* TwitterXApp.swift */,
+				25BDC0A628D02C5A00B48DB4 /* TimeStamp.swift */,
 				25BDC09B28D0126B00B48DB4 /* Models */,
 				2516701328D00C35005D8593 /* ContentView.swift */,
 				2516701528D00C36005D8593 /* Assets.xcassets */,
@@ -151,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				25BDC09D28D012B200B48DB4 /* TwitterXAuthentication.xcdatamodeld */,
+				25BDC0A228D0171800B48DB4 /* DBHelperAuthentication.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -287,8 +293,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2516701E28D00C36005D8593 /* TwitterX.xcdatamodeld in Sources */,
+				25BDC0A328D0171800B48DB4 /* DBHelperAuthentication.swift in Sources */,
 				25BDC09F28D012B200B48DB4 /* TwitterXAuthentication.xcdatamodeld in Sources */,
 				2516701B28D00C36005D8593 /* Persistence.swift in Sources */,
+				25BDC0A728D02C5A00B48DB4 /* TimeStamp.swift in Sources */,
 				2516701428D00C35005D8593 /* ContentView.swift in Sources */,
 				2516701228D00C35005D8593 /* TwitterXApp.swift in Sources */,
 			);

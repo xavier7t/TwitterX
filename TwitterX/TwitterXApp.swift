@@ -9,11 +9,11 @@ import SwiftUI
 
 @main
 struct TwitterXApp: App {
-    let persistenceController = PersistenceController.shared
+    let persistenceController = DBHelperAuthentication.shared
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TestView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

@@ -6,7 +6,7 @@
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="externalid" optional="YES" attributeType="String"/>
         <attribute name="externalname" optional="YES" attributeType="String"/>
-        <attribute name="internalid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="internalid" optional="YES" attributeType="String"/>
         <attribute name="internalname" optional="YES" attributeType="String"/>
         <attribute name="password" optional="YES" attributeType="String"/>
     </entity>
