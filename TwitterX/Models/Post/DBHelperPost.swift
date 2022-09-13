@@ -8,7 +8,7 @@
 import Foundation
 import SQLite3
 
-let appName = "TwitterX"
+let appName: String = "TwitterX"
 class DBHelperPost {
     static let shared = DBHelperPost()
     
@@ -60,5 +60,73 @@ class DBHelperPost {
             return
         }
         print("SQLite3 Table \"ZPOST\" is ready.")
+    }
+    
+    func create(authenticationextid: String, description: String, encodedimage: String, hasimage: Int) {
+        prepareDatabase()
+        prepareTable()
+        var statement: OpaquePointer?
+        
+        sqlStatement = """
+            INSERT INTO ZPOST (
+                externalid,
+                authenticationextid,
+                description,
+                encodedimage,
+                hasimage,
+                countcomments,
+                countlikes,
+                countretweets
+            ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ? );
+        """
+        
+        guard sqlite3_prepare(dbPointer, sqlStatement, -1, &statement, nil) == SQLITE_OK else {
+            printSQLiteErrorMessage()
+            return
+        }
+        
+        guard sqlite3_bind_text(statement, 1, (TimeStamp.shared.timestamp17(date: Date()) as NSString).utf8String, -1, nil) == SQLITE_OK else {
+            printSQLiteErrorMessage()
+            return
+        }
+        guard sqlite3_bind_text(statement, 2, (authenticationextid as NSString).utf8String, -1, nil) == SQLITE_OK else {
+            printSQLiteErrorMessage()
+            return
+        }
+        guard sqlite3_bind_text(statement, 3, (description as NSString).utf8String, -1, nil) == SQLITE_OK else {
+            printSQLiteErrorMessage()
+            return
+        }
+        guard sqlite3_bind_text(statement, 4, (encodedimage as NSString).utf8String, -1, nil) == SQLITE_OK else {
+            printSQLiteErrorMessage()
+            return
+        }
+        guard sqlite3_bind_int(statement, 5, Int32(hasimage)) == SQLITE_OK else {
+            printSQLiteErrorMessage()
+            return
+        }
+        guard sqlite3_bind_int(statement, 6, Int32(0)) == SQLITE_OK else {
+            printSQLiteErrorMessage()
+            return
+        }
+        guard sqlite3_bind_int(statement, 7, Int32(0)) == SQLITE_OK else {
+            printSQLiteErrorMessage()
+            return
+        }
+        guard sqlite3_bind_int(statement, 8, Int32(0)) == SQLITE_OK else {
+            printSQLiteErrorMessage()
+            return
+        }
+        
+        guard sqlite3_step(statement) == SQLITE_DONE else {
+            printSQLiteErrorMessage()
+            return
+        }
+        
+        sqlite3_reset(statement)
+        sqlite3_finalize(statement)
+        sqlite3_close(dbPointer)
+        
+        print("Post saved in database.")
     }
 }
