@@ -130,8 +130,6 @@ class DBHelperPost {
         }
         
         finalizeCRUDOperations(statement: statement)
-        
-        print("Post saved in database.")
     }
     
     func readAll() -> [Post] {
@@ -198,5 +196,60 @@ class DBHelperPost {
         
         finalizeCRUDOperations(statement: statement)
         return postsFetched
+    }
+    
+    // READ FUNCTION IS FOR REFERENCE & TESTING PURPOSE ONLY
+    func updateRecord(externalid: String, countcomments: Int) {
+        prepareDatabase()
+        prepareTable()
+        sqlStatement = """
+            UPDATE ZPOST SET countcomments = \(countcomments) WHERE externalid = \(externalid);
+        """
+        var statement: OpaquePointer?
+
+        guard sqlite3_prepare(dbPointer, sqlStatement, -1, &statement, nil) == SQLITE_OK else {
+            printSQLiteErrorMessage()
+            return
+        }
+//        //commented since the value is passed in from the function and updated in sqlStatement
+//        guard sqlite3_bind_int(statement, 0, Int32(countcomments)) == SQLITE_OK else {
+//            printSQLiteErrorMessage()
+//            return
+//        }
+//        guard sqlite3_bind_text(statement, 1, (externalid as NSString).utf8String, -1, nil) == SQLITE_OK else {
+//            printSQLiteErrorMessage()
+//            return
+//        }
+        
+        guard sqlite3_step(statement) == SQLITE_DONE else {
+            printSQLiteErrorMessage()
+            return
+        }
+        finalizeCRUDOperations(statement: statement)
+        print("updated")
+    }
+    
+    func deleteByExternalID(externalID: String) {
+        prepareDatabase()
+        prepareTable()
+        var statement: OpaquePointer?
+        sqlStatement = """
+            DELETE FROM ZPOST WHERE externalid = \(externalID);
+        """
+        
+        guard sqlite3_prepare(dbPointer, sqlStatement, -1, &statement, nil) == SQLITE_OK else {
+            printSQLiteErrorMessage()
+            return
+        }
+//        //commented since the value is passed in from the function and updated in sqlStatement
+//        guard sqlite3_bind_text(statement, 1, (externalID as NSString).utf8String, -1, nil) == SQLITE_OK else {
+//            return
+//        }
+        
+        guard sqlite3_step(statement) == SQLITE_DONE else {
+            printSQLiteErrorMessage()
+            return
+        }
+        finalizeCRUDOperations(statement: statement)
     }
 }

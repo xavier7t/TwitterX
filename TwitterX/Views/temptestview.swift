@@ -27,7 +27,8 @@ struct temptestview: View {
             }
         }
         .onAppear {
-            posts = DBHelperPost.shared.readOne(filterValue: "20220913175158769", filterKey: "externalid")
+            DBHelperPost.shared.updateRecord(externalid: "20220913175158769", countcomments: 150)
+            posts = DBHelperPost.shared.readAll()
         }
     }
 }
