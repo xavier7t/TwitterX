@@ -13,7 +13,7 @@ struct Post {
     var externalid: String
     var authenticationextid: String
     var description: String
-    private var encodedimage: String
+    var encodedimage: String
     var decodedimage: Image {
         decodeImageFromString(string: encodedimage)
     }

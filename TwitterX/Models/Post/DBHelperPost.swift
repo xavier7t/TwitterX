@@ -20,6 +20,12 @@ class DBHelperPost {
         print("SQLite Error: \(error)")
     }
     
+    private func finalizeCRUDOperations(statement: OpaquePointer?) {
+        sqlite3_reset(statement)
+        sqlite3_finalize(statement)
+        sqlite3_close(dbPointer)
+    }
+    
     func prepareDatabase() {
         let filePath = try! FileManager.default.url(
             for: .documentDirectory,
@@ -123,10 +129,41 @@ class DBHelperPost {
             return
         }
         
-        sqlite3_reset(statement)
-        sqlite3_finalize(statement)
-        sqlite3_close(dbPointer)
+        finalizeCRUDOperations(statement: statement)
         
         print("Post saved in database.")
+    }
+    
+    func readAll() -> [Post] {
+        var postsFetched: [Post] = []
+        prepareDatabase()
+        prepareTable()
+        var statement: OpaquePointer?
+        sqlStatement = """
+            SELECT * FROM ZPOST
+        """
+        
+        guard sqlite3_prepare(dbPointer, sqlStatement, -1, &statement, nil) == SQLITE_OK else {
+            printSQLiteErrorMessage()
+            return []
+        }
+        
+        while sqlite3_step(statement) == SQLITE_ROW {
+            let post = Post(
+                internalid: Int(sqlite3_column_int(statement, 0)),
+                externalid: String(cString: sqlite3_column_text(statement, 1)),
+                authenticationextid: String(cString: sqlite3_column_text(statement, 2)),
+                description: String(cString: sqlite3_column_text(statement, 3)),
+                encodedimage: String(cString: sqlite3_column_text(statement, 4)),
+                hasimage: Int(sqlite3_column_int(statement, 5)),
+                countcomments: Int(sqlite3_column_int(statement, 6)),
+                countlikes: Int(sqlite3_column_int(statement, 7)),
+                countretweets: Int(sqlite3_column_int(statement, 8))
+            )
+            postsFetched.append(post)
+        }
+        
+        finalizeCRUDOperations(statement: statement)
+        return postsFetched
     }
 }

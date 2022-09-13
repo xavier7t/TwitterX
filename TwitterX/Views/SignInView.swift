@@ -64,9 +64,6 @@ struct SignInView: View {
             }
             .offset(y: -105)
         }
-        .onAppear {
-            DBHelperPost.shared.create(authenticationextid: "1", description: "first hard code psot", encodedimage: "no", hasimage: 0)
-        }
     }
 }
 
