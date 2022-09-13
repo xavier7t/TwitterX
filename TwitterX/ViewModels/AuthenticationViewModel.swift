@@ -30,6 +30,17 @@ class AuthenticationViewModel: ObservableObject {
             return
         }
         
+        // validate if username is used
+        var countOfUsername: Int = 0
+        switch dbHelper.readOne(Authentication.self, "internalname", username) {
+        case .success(let auths): countOfUsername = auths.count
+        case .failure(let error): print(error.localizedDescription)
+        }
+        guard countOfUsername == 0 else {
+            errorMessage = "Username is registered. Please log in."
+            return
+        }
+        
         // validate email regex
         guard isValidEmail(email) else {
             errorMessage = "Invalid email address."
@@ -70,10 +81,7 @@ class AuthenticationViewModel: ObservableObject {
         dbHelper.createAuthentication(username: username, fullname: name, email: email, password: password)
         switch dbHelper.readOne(Authentication.self, "email", email) {
         case .failure(let error): print(error.localizedDescription)
-        case .success(let auths):
-            currentUser = auths[0]
-            print(currentUser?.email)
-            print(currentUser?.externalid)
+        case .success(let auths): currentUser = auths[0]
         }
     }
     

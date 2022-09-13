@@ -8,6 +8,14 @@
 import SwiftUI
 
 struct SignUpView: View {
+    @State private var name: String = ""
+    @State private var username: String = ""
+    @State private var email: String = ""
+    @State private var password: String = ""
+    @State private var passwordCnf: String = ""
+    
+    @StateObject var vm = AuthenticationViewModel()
+    
     var body: some View {
         ZStack {
             Color.logoBlue
@@ -32,14 +40,14 @@ struct SignUpView: View {
             
             VStack(spacing: 14) {
                 Spacer()
-                AuthenticationFieldView(placeholder: "Name", isSecureField: false, textValue: .constant(""))
-                AuthenticationFieldView(placeholder: "Username", isSecureField: false, textValue: .constant(""))
-                AuthenticationFieldView(placeholder: "Email", isSecureField: false, textValue: .constant(""))
-                AuthenticationFieldView(placeholder: "Password", isSecureField: false, textValue: .constant(""))
-                AuthenticationFieldView(placeholder: "Confirm you password", isSecureField: false, textValue: .constant(""))
-                AuthenticationErrorMessage(errorMsg: "Error Message Placeholder")
+                AuthenticationFieldView(placeholder: "Name", isSecureField: false, textValue: $name)
+                AuthenticationFieldView(placeholder: "Username", isSecureField: false, textValue: $username)
+                AuthenticationFieldView(placeholder: "Email", isSecureField: false, textValue: $email)
+                AuthenticationFieldView(placeholder: "Password", isSecureField: true, textValue: $password)
+                AuthenticationFieldView(placeholder: "Confirm you password", isSecureField: true, textValue: $passwordCnf)
+                AuthenticationErrorMessage(errorMsg: vm.errorMessage)
                 Button(action: {
-                    print("Tapped - Submit")
+                    vm.processSignUpRequest(name: name, username: username, email: email, password: password, passwordCnf: passwordCnf)
                 }, label: {
                     WideButtonLabel(
                         text: "Submit",
