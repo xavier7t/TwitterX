@@ -13,6 +13,47 @@ class AuthenticationViewModel: ObservableObject {
     
     private let dbHelper = DBHelperAuthentication.shared
     
+    func processSignInRequest(usernameoremail: String, password: String) {
+        // validate if both fields are filled & not empty
+        let fields: [String] = [usernameoremail, password]
+        for field in fields {
+            guard isBlankOrEmptyString(field) != true else {
+                errorMessage = "Please fill in both fields."
+                return
+            }
+        }
+        
+        // validate if username or username is registered
+        var userFound: Authentication? = nil
+        switch dbHelper.readOne(Authentication.self, "internalname", usernameoremail) {
+        case .success(let auths):
+            if auths.count == 0 {
+                switch dbHelper.readOne(Authentication.self, "email", usernameoremail) {
+                case .success(let auths):
+                    guard auths.count != 0 else {
+                        errorMessage = "User not found. Please sign up first."
+                        return
+                    }
+                    userFound = auths[0]
+                case .failure(let error): print(error.localizedDescription)
+                }
+            } else {
+                userFound = auths[0]
+            }
+        case .failure(let error): print(error.localizedDescription)
+        }
+        
+        
+        // validate if password is correct
+        guard password == userFound?.password! else {
+            errorMessage = "Incorrect password."
+            return
+        }
+        
+        currentUser = userFound
+        
+    }
+    
     func processSignUpRequest(name: String, username: String, email: String, password: String, passwordCnf: String) {
         
         // validate if all fields are filled & not empty
@@ -37,7 +78,7 @@ class AuthenticationViewModel: ObservableObject {
         case .failure(let error): print(error.localizedDescription)
         }
         guard countOfUsername == 0 else {
-            errorMessage = "Username is registered. Please log in."
+            errorMessage = "Username is registered. Please sign in."
             return
         }
         
@@ -54,7 +95,7 @@ class AuthenticationViewModel: ObservableObject {
         case .failure(let error): print(error.localizedDescription)
         }
         guard countOfEmail == 0 else {
-            errorMessage = "Email is registered. Please log in."
+            errorMessage = "Email is registered. Please sign in."
             return
         }
         
