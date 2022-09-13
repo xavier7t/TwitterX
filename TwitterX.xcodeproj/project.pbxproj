@@ -16,6 +16,7 @@
 		2516702828D00C36005D8593 /* TwitterXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2516702728D00C36005D8593 /* TwitterXTests.swift */; };
 		2516703228D00C36005D8593 /* TwitterXUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2516703128D00C36005D8593 /* TwitterXUITests.swift */; };
 		2516703428D00C36005D8593 /* TwitterXUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2516703328D00C36005D8593 /* TwitterXUITestsLaunchTests.swift */; };
+		2516704128D00D38005D8593 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2516704028D00D38005D8593 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		2516702D28D00C36005D8593 /* TwitterXUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitterXUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2516703128D00C36005D8593 /* TwitterXUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterXUITests.swift; sourceTree = "<group>"; };
 		2516703328D00C36005D8593 /* TwitterXUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterXUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2516704028D00D38005D8593 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 		2516700528D00C34005D8593 = {
 			isa = PBXGroup;
 			children = (
+				2516704028D00D38005D8593 /* .gitignore */,
 				2516701028D00C35005D8593 /* TwitterX */,
 				2516702628D00C36005D8593 /* TwitterXTests */,
 				2516703028D00C36005D8593 /* TwitterXUITests */,
@@ -238,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2516701928D00C36005D8593 /* Preview Assets.xcassets in Resources */,
+				2516704128D00D38005D8593 /* .gitignore in Resources */,
 				2516701628D00C36005D8593 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
