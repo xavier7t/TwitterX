@@ -52,8 +52,6 @@ class AuthenticationViewModel: ObservableObject {
         
         errorMessage = ""
         currentUser = userFound
-        print(currentUser?.externalid!)
-        print(currentUser?.email!)
     }
     
     func processSignUpRequest(name: String, username: String, email: String, password: String, passwordCnf: String) {
