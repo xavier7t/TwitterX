@@ -166,4 +166,37 @@ class DBHelperPost {
         finalizeCRUDOperations(statement: statement)
         return postsFetched
     }
+    
+    func readOne(filterValue: String, filterKey: String) -> [Post] {
+        var postsFetched: [Post] = []
+        prepareDatabase()
+        prepareTable()
+        var statement: OpaquePointer?
+        sqlStatement = """
+            SELECT * FROM ZPOST WHERE \(filterKey) = \(filterValue)
+        """
+        
+        guard sqlite3_prepare(dbPointer, sqlStatement, -1, &statement, nil) == SQLITE_OK else {
+            printSQLiteErrorMessage()
+            return []
+        }
+        
+        while sqlite3_step(statement) == SQLITE_ROW {
+            let post = Post(
+                internalid: Int(sqlite3_column_int(statement, 0)),
+                externalid: String(cString: sqlite3_column_text(statement, 1)),
+                authenticationextid: String(cString: sqlite3_column_text(statement, 2)),
+                description: String(cString: sqlite3_column_text(statement, 3)),
+                encodedimage: String(cString: sqlite3_column_text(statement, 4)),
+                hasimage: Int(sqlite3_column_int(statement, 5)),
+                countcomments: Int(sqlite3_column_int(statement, 6)),
+                countlikes: Int(sqlite3_column_int(statement, 7)),
+                countretweets: Int(sqlite3_column_int(statement, 8))
+            )
+            postsFetched.append(post)
+        }
+        
+        finalizeCRUDOperations(statement: statement)
+        return postsFetched
+    }
 }
