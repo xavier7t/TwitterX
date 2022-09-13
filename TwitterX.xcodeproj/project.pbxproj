@@ -17,6 +17,7 @@
 		2516703228D00C36005D8593 /* TwitterXUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2516703128D00C36005D8593 /* TwitterXUITests.swift */; };
 		2516703428D00C36005D8593 /* TwitterXUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2516703328D00C36005D8593 /* TwitterXUITestsLaunchTests.swift */; };
 		2516704128D00D38005D8593 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2516704028D00D38005D8593 /* .gitignore */; };
+		25A9348D28D1160500A5D691 /* DBHelperPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A9348C28D1160500A5D691 /* DBHelperPost.swift */; };
 		25B714E728D0CFEC00710FB0 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B714E628D0CFEC00710FB0 /* SignUpView.swift */; };
 		25B714EA28D0D0A800710FB0 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B714E928D0D0A800710FB0 /* CustomColor.swift */; };
 		25B714EC28D0D44C00710FB0 /* AuthenticationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B714EB28D0D44C00710FB0 /* AuthenticationField.swift */; };
@@ -61,6 +62,7 @@
 		2516703128D00C36005D8593 /* TwitterXUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterXUITests.swift; sourceTree = "<group>"; };
 		2516703328D00C36005D8593 /* TwitterXUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterXUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2516704028D00D38005D8593 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		25A9348C28D1160500A5D691 /* DBHelperPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelperPost.swift; sourceTree = "<group>"; };
 		25B714E628D0CFEC00710FB0 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		25B714E928D0D0A800710FB0 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		25B714EB28D0D44C00710FB0 /* AuthenticationField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationField.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				25B7151528D1085000710FB0 /* Post.swift */,
+				25A9348C28D1160500A5D691 /* DBHelperPost.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				25B714EE28D0D52400710FB0 /* AuthenticationErrorMessage.swift in Sources */,
 				2516701B28D00C36005D8593 /* Persistence.swift in Sources */,
 				25B7151328D0FB6F00710FB0 /* SignInView.swift in Sources */,
+				25A9348D28D1160500A5D691 /* DBHelperPost.swift in Sources */,
 				25B7151628D1085000710FB0 /* Post.swift in Sources */,
 				25B714E728D0CFEC00710FB0 /* SignUpView.swift in Sources */,
 				25BDC0A728D02C5A00B48DB4 /* TimeStamp.swift in Sources */,
