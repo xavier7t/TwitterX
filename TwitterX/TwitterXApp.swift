@@ -13,7 +13,7 @@ struct TwitterXApp: App {
 
     var body: some Scene {
         WindowGroup {
-            SignUpView()
+            SignInView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
