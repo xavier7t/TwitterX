@@ -118,7 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				25B714E828D0D09700710FB0 /* Extensions */,
-				25B714E328D0CFA500710FB0 /* SignUp */,
+				25B714E528D0CFC600710FB0 /* ViewModels */,
+				25B714E428D0CFB900710FB0 /* Views */,
 				25BDC09B28D0126B00B48DB4 /* Models */,
 				2516701128D00C35005D8593 /* TwitterXApp.swift */,
 				25BDC0A628D02C5A00B48DB4 /* TimeStamp.swift */,
@@ -156,29 +157,20 @@
 			path = TwitterXUITests;
 			sourceTree = "<group>";
 		};
-		25B714E328D0CFA500710FB0 /* SignUp */ = {
-			isa = PBXGroup;
-			children = (
-				25B714E528D0CFC600710FB0 /* ViewModel */,
-				25B714E428D0CFB900710FB0 /* View */,
-			);
-			path = SignUp;
-			sourceTree = "<group>";
-		};
-		25B714E428D0CFB900710FB0 /* View */ = {
+		25B714E428D0CFB900710FB0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				25B714E628D0CFEC00710FB0 /* SignUpView.swift */,
 				25B714F128D0D70600710FB0 /* Components */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		25B714E528D0CFC600710FB0 /* ViewModel */ = {
+		25B714E528D0CFC600710FB0 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		25B714E828D0D09700710FB0 /* Extensions */ = {
