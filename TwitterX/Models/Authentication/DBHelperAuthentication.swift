@@ -47,7 +47,7 @@ class DBHelperAuthentication {
         authentication.internalname = internalname
         authentication.externalname = externalname
         authentication.email = email
-        authentication.password = email
+        authentication.password = password
         authentication.desc = ""
         authentication.color = 0
         

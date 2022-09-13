@@ -10,6 +10,9 @@ import SwiftUI
 struct SignInView: View {
     @State private var usernameoremail: String = ""
     @State private var password: String = ""
+    
+    @StateObject var vm = AuthenticationViewModel()
+    
     var body: some View {
         ZStack {
             Color.logoBlue
@@ -36,9 +39,9 @@ struct SignInView: View {
                 Spacer()
                 AuthenticationFieldView(placeholder: "Email or Username", isSecureField: false, textValue: $usernameoremail)
                 AuthenticationFieldView(placeholder: "Confirm you password", isSecureField: true, textValue: $password)
-                AuthenticationErrorMessage(errorMsg: "Error Message Placeholder")
+                AuthenticationErrorMessage(errorMsg: vm.errorMessage)
                 Button(action: {
-                    print("tapped - sign in")
+                    vm.processSignInRequest(usernameoremail: usernameoremail, password: password)
                 }, label: {
                     WideButtonLabel(
                         text: "Sign in",
