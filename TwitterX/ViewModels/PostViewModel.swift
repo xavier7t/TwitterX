@@ -169,9 +169,7 @@ class  PostViewModel: ObservableObject {
             encodedimage: self.encodedimage,
             hasimage: self.hasimage)
         self.posted = true
-        self.data = nil
-        self.hasimage = 0
-        self.encodedimage = ""
+        resetVM()
         
         reloadPosts()
     }
@@ -194,5 +192,31 @@ class  PostViewModel: ObservableObject {
         }
         
         return isStringBlank || isStringEmpty
+    }
+    
+    @Published var showPostDI: Binding<Bool> = Binding.constant(false)
+    func triggerDI() {
+        let animation = Animation.spring(
+            response: 0.7,
+            dampingFraction: 0.7, blendDuration: 2.1)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+            withAnimation(animation) {
+                self.showPostDI = Binding.constant(true)
+            }
+        })
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5, execute: {
+            withAnimation(animation) {
+                self.showPostDI = Binding.constant(false)
+            }
+        })
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 5.1, execute: {
+//            self.resetVM()
+//        })
+    }
+    
+    func resetVM() {
+        self.data = nil
+        self.hasimage = 0
+        self.encodedimage = ""
     }
 }

@@ -32,6 +32,7 @@ struct NewPostView: View {
                     vm.processPostRequest(description: description)
                     if vm.posted {
                         presentationMode.wrappedValue.dismiss()
+                        vm.triggerDI()
                     }
                 }, label: {
                     WideButtonLabel(

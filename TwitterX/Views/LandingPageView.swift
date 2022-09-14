@@ -11,6 +11,7 @@ struct LandingPageView: View {
     @State private var showNewPost: Bool = false
     @State private var selection: Tab = .PostView
     @EnvironmentObject var vmAuth: AuthenticationViewModel
+    @EnvironmentObject var vmPost: PostViewModel
     enum Tab {
         case PostView
         case Search
@@ -69,6 +70,12 @@ struct LandingPageView: View {
 
                 Spacer()
             }
+            VStack {
+                DynamicIslandViewPost(expanded: vmPost.showPostDI)
+                    .offset(y: -49)
+
+                Spacer()
+            }
         }
     }
 }
@@ -77,5 +84,6 @@ struct LandingPageView_Previews: PreviewProvider {
     static var previews: some View {
         LandingPageView()
             .environmentObject(AuthenticationViewModel())
+            .environmentObject(PostViewModel())
     }
 }

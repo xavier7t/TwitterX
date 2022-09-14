@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NewPostButton: View {
+    @EnvironmentObject var vm: PostViewModel
     @Binding var showView: Bool
     var body: some View {
         Button(action: {
