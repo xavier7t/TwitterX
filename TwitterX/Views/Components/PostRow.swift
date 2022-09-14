@@ -39,6 +39,7 @@ struct PostRow: View {
                     Spacer()
                     Image(systemName: "ellipsis")
                         .foregroundColor(.secondary)
+
                 }
                 
                 Text(post.description)

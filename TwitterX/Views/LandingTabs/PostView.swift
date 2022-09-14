@@ -21,6 +21,7 @@ struct PostView: View {
                     .listStyle(GroupedListStyle())
                     .navigationTitle("TwitterX")
                 }
+                .scrollIndicators(.never)
                 .refreshable {
                     vm.reloadPosts()
                 }

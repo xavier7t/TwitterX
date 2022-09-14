@@ -24,6 +24,7 @@ class  PostViewModel: ObservableObject {
     }
     
     func getPostAuthor(postExternalID: String) -> Authentication? {
+        print("Reading post: \(postExternalID)")
         let authExternalID: String = dbHelperPost.readOne(filterValue: "externalid", filterKey: postExternalID)[0].authenticationextid
         let authFetchResult = dbHelperAuth.readOne(Authentication.self, "externalid", authExternalID)
         switch authFetchResult {
@@ -79,7 +80,11 @@ class  PostViewModel: ObservableObject {
         
         return result
     }
-    
+    func processDeleteRequest(postExternalID: String) {
+        print("will delete \(postExternalID) soon")
+        dbHelperPost.deleteByExternalID(externalID: postExternalID)
+        reloadPosts()
+    }
     func decodeImage(post: Post) -> Image {
         decodeImageFromString(string: post.encodedimage)
     }
