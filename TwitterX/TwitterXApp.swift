@@ -16,7 +16,7 @@ struct TwitterXApp: App {
         WindowGroup {
             
             if ud.bool(forKey: "isLoggedIn") {
-                PostView()
+                LandingPageView()
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .onAppear {
                         printFilePath()

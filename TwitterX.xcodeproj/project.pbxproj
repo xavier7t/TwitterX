@@ -19,6 +19,9 @@
 		2516704128D00D38005D8593 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2516704028D00D38005D8593 /* .gitignore */; };
 		255A906628D18A1F006CF50C /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255A906528D18A1F006CF50C /* WelcomeView.swift */; };
 		255A906828D191A1006CF50C /* NewPostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255A906728D191A1006CF50C /* NewPostButton.swift */; };
+		255A906B28D1954E006CF50C /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255A906A28D1954E006CF50C /* LandingPageView.swift */; };
+		255A906D28D1962D006CF50C /* NewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255A906C28D1962D006CF50C /* NewPostView.swift */; };
+		255A906F28D196B2006CF50C /* CustomPresentationDetent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255A906E28D196B2006CF50C /* CustomPresentationDetent.swift */; };
 		2576DF7A28D14F610018B0ED /* PostRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2576DF7928D14F610018B0ED /* PostRow.swift */; };
 		2576DF7C28D153E20018B0ED /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2576DF7B28D153E20018B0ED /* PostView.swift */; };
 		2576DF7E28D15EBD0018B0ED /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2576DF7D28D15EBD0018B0ED /* PostViewModel.swift */; };
@@ -69,6 +72,9 @@
 		2516704028D00D38005D8593 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		255A906528D18A1F006CF50C /* WelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		255A906728D191A1006CF50C /* NewPostButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostButton.swift; sourceTree = "<group>"; };
+		255A906A28D1954E006CF50C /* LandingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageView.swift; sourceTree = "<group>"; };
+		255A906C28D1962D006CF50C /* NewPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostView.swift; sourceTree = "<group>"; };
+		255A906E28D196B2006CF50C /* CustomPresentationDetent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresentationDetent.swift; sourceTree = "<group>"; };
 		2576DF7928D14F610018B0ED /* PostRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRow.swift; sourceTree = "<group>"; };
 		2576DF7B28D153E20018B0ED /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		2576DF7D28D15EBD0018B0ED /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
@@ -175,13 +181,23 @@
 			path = TwitterXUITests;
 			sourceTree = "<group>";
 		};
+		255A906928D19532006CF50C /* LandingTabs */ = {
+			isa = PBXGroup;
+			children = (
+				2576DF7B28D153E20018B0ED /* PostView.swift */,
+			);
+			path = LandingTabs;
+			sourceTree = "<group>";
+		};
 		25B714E428D0CFB900710FB0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				255A906528D18A1F006CF50C /* WelcomeView.swift */,
 				25B714E628D0CFEC00710FB0 /* SignUpView.swift */,
 				25B7151228D0FB6F00710FB0 /* SignInView.swift */,
-				2576DF7B28D153E20018B0ED /* PostView.swift */,
+				255A906A28D1954E006CF50C /* LandingPageView.swift */,
+				255A906C28D1962D006CF50C /* NewPostView.swift */,
+				255A906928D19532006CF50C /* LandingTabs */,
 				25B714F128D0D70600710FB0 /* Components */,
 			);
 			path = Views;
@@ -200,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				25B714E928D0D0A800710FB0 /* CustomColor.swift */,
+				255A906E28D196B2006CF50C /* CustomPresentationDetent.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -378,9 +395,11 @@
 				2516701E28D00C36005D8593 /* TwitterX.xcdatamodeld in Sources */,
 				255A906828D191A1006CF50C /* NewPostButton.swift in Sources */,
 				25BDC0A328D0171800B48DB4 /* DBHelperAuthentication.swift in Sources */,
+				255A906F28D196B2006CF50C /* CustomPresentationDetent.swift in Sources */,
 				25B714EC28D0D44C00710FB0 /* AuthenticationField.swift in Sources */,
 				25B714EA28D0D0A800710FB0 /* CustomColor.swift in Sources */,
 				25BDC09F28D012B200B48DB4 /* TwitterXAuthentication.xcdatamodeld in Sources */,
+				255A906B28D1954E006CF50C /* LandingPageView.swift in Sources */,
 				25B714EE28D0D52400710FB0 /* AuthenticationErrorMessage.swift in Sources */,
 				2516701B28D00C36005D8593 /* Persistence.swift in Sources */,
 				25B7151328D0FB6F00710FB0 /* SignInView.swift in Sources */,
@@ -391,6 +410,7 @@
 				25B714F028D0D60600710FB0 /* WideButtonLabel.swift in Sources */,
 				2576DF7A28D14F610018B0ED /* PostRow.swift in Sources */,
 				255A906628D18A1F006CF50C /* WelcomeView.swift in Sources */,
+				255A906D28D1962D006CF50C /* NewPostView.swift in Sources */,
 				2516701428D00C35005D8593 /* ContentView.swift in Sources */,
 				2576DF7C28D153E20018B0ED /* PostView.swift in Sources */,
 				2516701228D00C35005D8593 /* TwitterXApp.swift in Sources */,

@@ -69,7 +69,7 @@ struct SignInView: View {
             .offset(y: -105)
         }
         .fullScreenCover(isPresented: $showLandingPage, content: PostView.init)
-        .fullScreenCover(isPresented: $switchAuthenticationMode, content: SignUpView.init)
+        .fullScreenCover(isPresented: $switchAuthenticationMode, content: LandingPageView.init)
     }
 }
 
