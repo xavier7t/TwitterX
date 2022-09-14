@@ -10,6 +10,9 @@ import SwiftUI
 struct LandingPageView: View {
     @State private var showNewPost: Bool = false
     @State private var selection: Tab = .PostView
+    @State private var showSignInDI: Bool = false
+    //@State private var showPostDI: Bool = false
+    @EnvironmentObject var vmAuth: AuthenticationViewModel
     enum Tab {
         case PostView
         case Search
@@ -50,7 +53,6 @@ struct LandingPageView: View {
             .accentColor(.logoBlue)
             
             VStack {
-                // new post button
                 Spacer()
                 HStack {
                     Spacer()
@@ -64,7 +66,25 @@ struct LandingPageView: View {
                 }
             }
             VStack {
-                // dynamic island view
+                DynamicIslandViewSignIn(expanded: vmAuth.showAuthenticationDI)
+                    .offset(y: -49)
+
+                Spacer()
+                Button(action: {
+                    let animation = Animation.spring(
+                        response: 0.7,
+                        dampingFraction: 0.7, blendDuration: 2.1)
+                    withAnimation(animation) {
+                        vmAuth.showAuthenticationDI.toggle()
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                        withAnimation(animation) {
+                            vmAuth.showAuthenticationDI.toggle()
+                        }
+                    })
+                }, label: {
+                    Text("Trigger animation")
+                })
             }
         }
     }
@@ -73,5 +93,6 @@ struct LandingPageView: View {
 struct LandingPageView_Previews: PreviewProvider {
     static var previews: some View {
         LandingPageView()
+            .environmentObject(AuthenticationViewModel())
     }
 }

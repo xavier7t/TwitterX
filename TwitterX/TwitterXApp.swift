@@ -11,6 +11,7 @@ import SwiftUI
 struct TwitterXApp: App {
     let persistenceController = DBHelperAuthentication.shared
     let sharedPostViewModel = PostViewModel()
+    let sharedAuthenticationViewModel = AuthenticationViewModel()
     let ud = UserDefaults.standard
     var body: some Scene {
         WindowGroup {
@@ -18,6 +19,7 @@ struct TwitterXApp: App {
             if ud.bool(forKey: "isLoggedIn") {
                 LandingPageView()
                     .environmentObject(sharedPostViewModel)
+                    .environmentObject(sharedAuthenticationViewModel)
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .onAppear {
                         printFilePath()
@@ -25,6 +27,7 @@ struct TwitterXApp: App {
             } else {
                 WelcomeView()
                     .environmentObject(sharedPostViewModel)
+                    .environmentObject(sharedAuthenticationViewModel)
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .onAppear {
                         printFilePath()

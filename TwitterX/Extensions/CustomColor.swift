@@ -11,4 +11,5 @@ import SwiftUI
 extension Color {
     static let logoBlue = Color("logoBlue")
     static let errorRed = Color("errorRed")
+    static let strokeBlue = Color("strokeBlue")
 }

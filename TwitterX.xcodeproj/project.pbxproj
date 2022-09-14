@@ -38,6 +38,7 @@
 		25BDC09F28D012B200B48DB4 /* TwitterXAuthentication.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 25BDC09D28D012B200B48DB4 /* TwitterXAuthentication.xcdatamodeld */; };
 		25BDC0A328D0171800B48DB4 /* DBHelperAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDC0A228D0171800B48DB4 /* DBHelperAuthentication.swift */; };
 		25BDC0A728D02C5A00B48DB4 /* TimeStamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDC0A628D02C5A00B48DB4 /* TimeStamp.swift */; };
+		25D7CEA628D25CC3001EE038 /* DynamicIslandViewSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D7CEA528D25CC3001EE038 /* DynamicIslandViewSignIn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		25BDC09E28D012B200B48DB4 /* TwitterXAuthentication.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TwitterXAuthentication.xcdatamodel; sourceTree = "<group>"; };
 		25BDC0A228D0171800B48DB4 /* DBHelperAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelperAuthentication.swift; sourceTree = "<group>"; };
 		25BDC0A628D02C5A00B48DB4 /* TimeStamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStamp.swift; sourceTree = "<group>"; };
+		25D7CEA528D25CC3001EE038 /* DynamicIslandViewSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicIslandViewSignIn.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 				25B714EF28D0D60600710FB0 /* WideButtonLabel.swift */,
 				2576DF7928D14F610018B0ED /* PostRow.swift */,
 				255A906728D191A1006CF50C /* NewPostButton.swift */,
+				25D7CEA528D25CC3001EE038 /* DynamicIslandViewSignIn.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				2576DF7C28D153E20018B0ED /* PostView.swift in Sources */,
 				2516701228D00C35005D8593 /* TwitterXApp.swift in Sources */,
 				2576DF7E28D15EBD0018B0ED /* PostViewModel.swift in Sources */,
+				25D7CEA628D25CC3001EE038 /* DynamicIslandViewSignIn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
 
 class AuthenticationViewModel: ObservableObject {
     @Published var errorMessage: String = ""
     @Published var currentUser: Authentication?
+    @Published var showAuthenticationDI: Bool = false
     
     private let dbHelper = DBHelperAuthentication.shared
     
@@ -29,6 +31,20 @@ class AuthenticationViewModel: ObservableObject {
             }
         }
     }
+    
+//    func triggerDI() {
+//        let animation = Animation.spring(
+//            response: 0.7,
+//            dampingFraction: 0.7, blendDuration: 2.1)
+//        withAnimation(animation) {
+//            showAuthenticationDI.toggle()
+//        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+//            withAnimation(animation) {
+//                self.showAuthenticationDI.toggle()
+//            }
+//        })
+//    }
     
     func processSignInRequest(usernameoremail: String, password: String) {
         // validate if both fields are filled & not empty
