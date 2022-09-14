@@ -1,5 +1,5 @@
 //
-//  DynamicIslandView.swift
+//  DynamicIslandViewAuthen.swift
 //  TwitterX
 //
 //  Created by Xavier on 9/14/22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DynamicIslandViewSignIn: View {
+struct DynamicIslandViewAuthentication: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var vm: AuthenticationViewModel
     @Binding var expanded: Bool
@@ -66,7 +66,7 @@ struct DynamicIslandViewSignIn: View {
 
 struct DynamicIslandView_Previews: PreviewProvider {
     static var previews: some View {
-        DynamicIslandViewSignIn(expanded: .constant(true))
+        DynamicIslandViewAuthentication(expanded: .constant(true))
             .environmentObject(AuthenticationViewModel())
     }
 }

@@ -64,7 +64,7 @@ struct LandingPageView: View {
                 }
             }
             VStack {
-                DynamicIslandViewSignIn(expanded: vmAuth.showAuthenticationDI)
+                DynamicIslandViewAuthentication(expanded: vmAuth.showAuthenticationDI)
                     .offset(y: -49)
 
                 Spacer()
