@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct PostView: View {
-    @StateObject var vm = PostViewModel()
+    @StateObject var vmPost = PostViewModel()
+    @StateObject var vmAuth = AuthenticationViewModel()
     var body: some View {
         NavigationView {
             ScrollView {
-                ForEach(vm.posts, id: \.externalid) { post in
+                ForEach(vmPost.posts, id: \.externalid) { post in
                     Divider()
                     PostRow(post: post)
                         .listRowInsets(EdgeInsets())

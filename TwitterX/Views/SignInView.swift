@@ -10,7 +10,8 @@ import SwiftUI
 struct SignInView: View {
     @State private var usernameoremail: String = ""
     @State private var password: String = ""
-    
+    @State private var showLandingPage: Bool = false
+    @State private var switchAuthenticationMode: Bool = false
     @StateObject var vm = AuthenticationViewModel()
     
     var body: some View {
@@ -42,6 +43,9 @@ struct SignInView: View {
                 AuthenticationErrorMessage(errorMsg: vm.errorMessage)
                 Button(action: {
                     vm.processSignInRequest(usernameoremail: usernameoremail, password: password)
+                    if vm.currentUser != nil {
+                        showLandingPage.toggle()
+                    }
                 }, label: {
                     WideButtonLabel(
                         text: "Sign in",
@@ -54,7 +58,7 @@ struct SignInView: View {
                     Text("Don’t have an account?")
                         .foregroundColor(.white)
                     Button(action: {
-                        print("Tapped - Sign up")
+                        switchAuthenticationMode.toggle()
                     }, label: {
                         Text("Sign up")
                             .foregroundColor(.white)
@@ -64,6 +68,8 @@ struct SignInView: View {
             }
             .offset(y: -105)
         }
+        .fullScreenCover(isPresented: $showLandingPage, content: PostView.init)
+        .fullScreenCover(isPresented: $switchAuthenticationMode, content: SignUpView.init)
     }
 }
 

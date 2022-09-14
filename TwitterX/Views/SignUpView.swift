@@ -13,7 +13,8 @@ struct SignUpView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var passwordCnf: String = ""
-    
+    @State private var showLandingPage: Bool = false
+    @State private var switchAuthenticationMode: Bool = false
     @StateObject var vm = AuthenticationViewModel()
     
     var body: some View {
@@ -48,6 +49,9 @@ struct SignUpView: View {
                 AuthenticationErrorMessage(errorMsg: vm.errorMessage)
                 Button(action: {
                     vm.processSignUpRequest(name: name, username: username, email: email, password: password, passwordCnf: passwordCnf)
+                    if vm.currentUser != nil {
+                        showLandingPage.toggle()
+                    }
                 }, label: {
                     WideButtonLabel(
                         text: "Submit",
@@ -60,7 +64,7 @@ struct SignUpView: View {
                     Text("Have an account already?")
                         .foregroundColor(.white)
                     Button(action: {
-                        print("Tapped - Sign in")
+                        switchAuthenticationMode.toggle()
                     }, label: {
                         Text("Sign in")
                             .foregroundColor(.white)
@@ -69,8 +73,9 @@ struct SignUpView: View {
                 }
             }
             .offset(y: -105)
-            
         }
+        .fullScreenCover(isPresented: $showLandingPage, content: PostView.init)
+        .fullScreenCover(isPresented: $switchAuthenticationMode, content: SignInView.init)
     }
 }
 

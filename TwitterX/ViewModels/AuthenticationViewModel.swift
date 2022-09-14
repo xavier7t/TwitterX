@@ -13,6 +13,23 @@ class AuthenticationViewModel: ObservableObject {
     
     private let dbHelper = DBHelperAuthentication.shared
     
+    private func updateUserDefaults(isLoggedIn: Bool) {
+        let ud = UserDefaults.standard
+        ud.setValue(true, forKey: "isLoggedIn")
+        ud.setValue(currentUser!.externalid, forKey: "currentUserExternalID")
+    }
+    
+    init() {
+        let ud = UserDefaults.standard
+        if ud.bool(forKey: "isLoggedIn") {
+            let fetchedResult = dbHelper.readOne(Authentication.self, "externalid", ud.string(forKey: "currentUserExternalID")!)
+            switch fetchedResult {
+            case .success(let auths): currentUser = auths[0]
+            case .failure(let error): print(error.localizedDescription)
+            }
+        }
+    }
+    
     func processSignInRequest(usernameoremail: String, password: String) {
         // validate if both fields are filled & not empty
         let fields: [String] = [usernameoremail, password]
@@ -52,6 +69,7 @@ class AuthenticationViewModel: ObservableObject {
         
         errorMessage = ""
         currentUser = userFound
+        updateUserDefaults(isLoggedIn: true)
     }
     
     func processSignUpRequest(name: String, username: String, email: String, password: String, passwordCnf: String) {
@@ -122,7 +140,9 @@ class AuthenticationViewModel: ObservableObject {
         dbHelper.createAuthentication(username: username, fullname: name, email: email, password: password)
         switch dbHelper.readOne(Authentication.self, "email", email) {
         case .failure(let error): print(error.localizedDescription)
-        case .success(let auths): currentUser = auths[0]
+        case .success(let auths):
+            currentUser = auths[0]
+            updateUserDefaults(isLoggedIn: true)
         }
     }
     

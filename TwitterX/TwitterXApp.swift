@@ -11,14 +11,23 @@ import SwiftUI
 struct TwitterXApp: App {
     let persistenceController = DBHelperAuthentication.shared
     let sharedPostViewModel = PostViewModel()
-    
+    let ud = UserDefaults.standard
     var body: some Scene {
         WindowGroup {
-            PostView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .onAppear {
-                    printFilePath()
-                }
+            
+            if ud.bool(forKey: "isLoggedIn") {
+                PostView()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .onAppear {
+                        printFilePath()
+                    }
+            } else {
+                WelcomeView()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .onAppear {
+                        printFilePath()
+                    }
+            }
         }
     }
 }
