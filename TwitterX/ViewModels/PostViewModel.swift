@@ -14,11 +14,8 @@ class  PostViewModel: ObservableObject {
     private let dbHelperPost = DBHelperPost.shared
     private let dbHelperAuth = DBHelperAuthentication.shared
     
-    init() {
-        loadPosts()
-    }
-    
     func loadPosts() {
+        self.objectWillChange.send()
         posts = dbHelperPost.readAll().reversed()
     }
     

@@ -16,15 +16,12 @@ struct PostRow: View {
     var body: some View {
         HStack {
             VStack {
-                Text(String(Array(author.externalname!)[0]))
-                    .bold()
-                    .font(.title)
-                    .foregroundColor(.white)
-                    .frame(width: 55, height: 55)
-                    .background(vm.getPostAuthorColor(auth: author))
-                    .cornerRadius(21)
-                    .padding(.trailing, 15)
-                    .padding(.top, 15)
+                ProfileImageView(
+                    text: String(Array(author.externalname!)[0]),
+                    bgColor: vm.getPostAuthorColor(auth: author)!
+                )
+                .padding(.trailing, 15)
+                .padding(.top, 15)
                 Spacer()
             }
             
@@ -49,7 +46,9 @@ struct PostRow: View {
                 if post.hasimage == 1 {
                     vm.decodeImage(post: post)
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .scaledToFill()
+                        .frame(width: 280, height: 200)
+                        .clipped()
                         .cornerRadius(14)
                 }
                 
@@ -79,5 +78,19 @@ struct PostRow: View {
             .padding(.trailing, 5)
         }
         //.border(.red) // for testing & validation purpose only
+    }
+}
+
+struct ProfileImageView: View {
+    var text: String
+    var bgColor: Color
+    var body: some View {
+        Text(text)
+            .bold()
+            .font(.title)
+            .foregroundColor(.white)
+            .frame(width: 55, height: 55)
+            .background(bgColor)
+            .cornerRadius(21)
     }
 }

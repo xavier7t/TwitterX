@@ -10,7 +10,6 @@ import SwiftUI
 struct LandingPageView: View {
     @State private var showNewPost: Bool = false
     @State private var selection: Tab = .PostView
-    
     enum Tab {
         case PostView
         case Search

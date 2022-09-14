@@ -12,6 +12,8 @@ struct NewPostView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.colorScheme) var colorScheme
     @State private var selectedImages: [PhotosPickerItem] = []
+    @State private var description: String = ""
+    @StateObject var vm = NewPostViewModel()
     
     var body: some View {
         VStack {
@@ -27,9 +29,10 @@ struct NewPostView: View {
                 })
                 Spacer()
                 Button(action: {
-                    print("tweeted.")
-                    // create post
-                    presentationMode.wrappedValue.dismiss()
+                    vm.processPostRequest(description: description)
+                    if vm.posted {
+                        presentationMode.wrappedValue.dismiss()
+                    }
                 }, label: {
                     WideButtonLabel(
                         text: "Tweet",
@@ -37,29 +40,34 @@ struct NewPostView: View {
                         bgColor: (colorScheme == .dark) ? .white : .accentColor,
                         width: 100
                     )
-                        .padding(.trailing, 30)
+                    .padding(.trailing, 30)
                 })
             }
             .padding(.top, 50)
             
             HStack {
                 VStack {
-                    //ProfileImageView(name: currentUser)
-                    //.scaleEffect(0.8)
+                    vm.currentAuthProfileView()
+                        .scaleEffect(0.8)
                     Spacer()
                 }
                 VStack {
-                    TextField("What’s happending?", text: .constant(""),  axis: .vertical)
+                    TextField("What’s happening?", text: $description,  axis: .vertical)
                         .lineLimit(5...10)
                         .frame(width: 210)
-
+                    if vm.hasimage == 1 {
+                        vm.presentSelectedImage()
+                            .resizable()
+                            .frame(width: 140, height: 140)
+                            .cornerRadius(25)
+                    }
                     Spacer()
                 }
             }
             .padding(.trailing, 30)
             .padding(.top, 20)
             Spacer()
-            Text("Error message placeholder")
+            Text(vm.errorMessage)
                 .foregroundColor(.errorRed)
             Divider()
             HStack {
@@ -75,6 +83,9 @@ struct NewPostView: View {
                             .scaledToFit()
                             .frame(width: 27, height: 16)
                     })
+                .onChange(of: selectedImages) { newValue in
+                    vm.processSelectedImage(selectedImages: selectedImages)
+                }
                 Image(systemName: "video")
                     .resizable()
                     .bold()

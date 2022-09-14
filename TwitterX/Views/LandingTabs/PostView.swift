@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct PostView: View {
-    @StateObject var vmPost = PostViewModel()
-    @StateObject var vmAuth = AuthenticationViewModel()
+    @StateObject var vm = PostViewModel()
     var body: some View {
         NavigationView {
-            if vmPost.posts.count != 0 {
+            if vm.posts.count != 0 {
                 ScrollView {
-                    ForEach(vmPost.posts, id: \.externalid) { post in
+                    ForEach(vm.posts, id: \.externalid) { post in
                         Divider()
                         PostRow(post: post)
                             .listRowInsets(EdgeInsets())
@@ -22,11 +21,17 @@ struct PostView: View {
                     .listStyle(GroupedListStyle())
                     .navigationTitle("TwitterX")
                 }
+                .refreshable {
+                    vm.loadPosts()
+                }
             } else {
                 Text("No post found yet. Feel free to create the first one!")
                     .foregroundColor(.secondary)
                     .font(.subheadline)
             }
+        }
+        .onAppear {
+            vm.loadPosts()
         }
     }
 }
