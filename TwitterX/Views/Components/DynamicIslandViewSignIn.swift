@@ -9,14 +9,15 @@ import SwiftUI
 
 struct DynamicIslandViewSignIn: View {
     @Environment(\.colorScheme) var colorScheme
-    var expanded: Bool
+    @EnvironmentObject var vm: AuthenticationViewModel
+    @Binding var expanded: Bool
     var body: some View {
         VStack {
             Spacer()
             HStack {
                 
                 if expanded {
-                    ProfileImageView(text: "X", bgColor: .teal)
+                    vm.currentAuthProfileView()
                         .scaleEffect(0.7)
                         .frame(
                             width: expanded ? 27 : 10,
@@ -30,7 +31,7 @@ struct DynamicIslandViewSignIn: View {
                 if expanded {
                     VStack {
                         Text("Welcome back,")
-                        Text("Xavier!")
+                        Text(vm.currentUser!.externalname!)
                     }
                     .foregroundColor(.white)
                     .bold()
@@ -65,6 +66,7 @@ struct DynamicIslandViewSignIn: View {
 
 struct DynamicIslandView_Previews: PreviewProvider {
     static var previews: some View {
-        DynamicIslandViewSignIn(expanded: true)
+        DynamicIslandViewSignIn(expanded: .constant(true))
+            .environmentObject(AuthenticationViewModel())
     }
 }

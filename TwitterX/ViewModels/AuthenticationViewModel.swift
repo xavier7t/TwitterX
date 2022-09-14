@@ -11,7 +11,7 @@ import SwiftUI
 class AuthenticationViewModel: ObservableObject {
     @Published var errorMessage: String = ""
     @Published var currentUser: Authentication?
-    @Published var showAuthenticationDI: Bool = false
+    @Published var showAuthenticationDI: Binding<Bool> = Binding.constant(false)
     
     private let dbHelper = DBHelperAuthentication.shared
     
@@ -32,19 +32,32 @@ class AuthenticationViewModel: ObservableObject {
         }
     }
     
-//    func triggerDI() {
-//        let animation = Animation.spring(
-//            response: 0.7,
-//            dampingFraction: 0.7, blendDuration: 2.1)
-//        withAnimation(animation) {
-//            showAuthenticationDI.toggle()
-//        }
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-//            withAnimation(animation) {
-//                self.showAuthenticationDI.toggle()
-//            }
-//        })
-//    }
+    func currentAuthProfileView() -> ProfileImageView {
+        
+        let text = String(Array(currentUser!.externalname!)[0])
+        var color: Color
+        switch currentUser!.color {
+        case 0: color = .logoBlue
+        default: color = .teal
+        }
+        return ProfileImageView(text: text, bgColor: color)
+    }
+    
+    func triggerDI() {
+        let animation = Animation.spring(
+            response: 0.7,
+            dampingFraction: 0.7, blendDuration: 2.1)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+            withAnimation(animation) {
+                self.showAuthenticationDI = Binding.constant(true)
+            }
+        })
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5, execute: {
+            withAnimation(animation) {
+                self.showAuthenticationDI = Binding.constant(false)
+            }
+        })
+    }
     
     func processSignInRequest(usernameoremail: String, password: String) {
         // validate if both fields are filled & not empty

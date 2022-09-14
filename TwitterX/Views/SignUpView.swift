@@ -15,7 +15,7 @@ struct SignUpView: View {
     @State private var passwordCnf: String = ""
     @State private var showLandingPage: Bool = false
     @State private var switchAuthenticationMode: Bool = false
-    @StateObject var vm = AuthenticationViewModel()
+    @EnvironmentObject var vm: AuthenticationViewModel
     
     var body: some View {
         ZStack {
@@ -51,6 +51,7 @@ struct SignUpView: View {
                     vm.processSignUpRequest(name: name, username: username, email: email, password: password, passwordCnf: passwordCnf)
                     if vm.currentUser != nil {
                         showLandingPage.toggle()
+                        vm.triggerDI()
                     }
                 }, label: {
                     WideButtonLabel(
@@ -82,6 +83,7 @@ struct SignUpView: View {
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
         SignUpView()
+            .environmentObject(AuthenticationViewModel())
     }
 }
 

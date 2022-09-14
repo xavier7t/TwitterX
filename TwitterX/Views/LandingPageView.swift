@@ -70,21 +70,6 @@ struct LandingPageView: View {
                     .offset(y: -49)
 
                 Spacer()
-                Button(action: {
-                    let animation = Animation.spring(
-                        response: 0.7,
-                        dampingFraction: 0.7, blendDuration: 2.1)
-                    withAnimation(animation) {
-                        vmAuth.showAuthenticationDI.toggle()
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                        withAnimation(animation) {
-                            vmAuth.showAuthenticationDI.toggle()
-                        }
-                    })
-                }, label: {
-                    Text("Trigger animation")
-                })
             }
         }
     }
