@@ -18,6 +18,7 @@
 		2516703428D00C36005D8593 /* TwitterXUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2516703328D00C36005D8593 /* TwitterXUITestsLaunchTests.swift */; };
 		2516704128D00D38005D8593 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2516704028D00D38005D8593 /* .gitignore */; };
 		255A906628D18A1F006CF50C /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255A906528D18A1F006CF50C /* WelcomeView.swift */; };
+		255A906828D191A1006CF50C /* NewPostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255A906728D191A1006CF50C /* NewPostButton.swift */; };
 		2576DF7A28D14F610018B0ED /* PostRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2576DF7928D14F610018B0ED /* PostRow.swift */; };
 		2576DF7C28D153E20018B0ED /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2576DF7B28D153E20018B0ED /* PostView.swift */; };
 		2576DF7E28D15EBD0018B0ED /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2576DF7D28D15EBD0018B0ED /* PostViewModel.swift */; };
@@ -67,6 +68,7 @@
 		2516703328D00C36005D8593 /* TwitterXUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterXUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2516704028D00D38005D8593 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		255A906528D18A1F006CF50C /* WelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		255A906728D191A1006CF50C /* NewPostButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostButton.swift; sourceTree = "<group>"; };
 		2576DF7928D14F610018B0ED /* PostRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRow.swift; sourceTree = "<group>"; };
 		2576DF7B28D153E20018B0ED /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		2576DF7D28D15EBD0018B0ED /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				25B714ED28D0D52400710FB0 /* AuthenticationErrorMessage.swift */,
 				25B714EF28D0D60600710FB0 /* WideButtonLabel.swift */,
 				2576DF7928D14F610018B0ED /* PostRow.swift */,
+				255A906728D191A1006CF50C /* NewPostButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 			files = (
 				25B7151128D0E03000710FB0 /* AuthenticationViewModel.swift in Sources */,
 				2516701E28D00C36005D8593 /* TwitterX.xcdatamodeld in Sources */,
+				255A906828D191A1006CF50C /* NewPostButton.swift in Sources */,
 				25BDC0A328D0171800B48DB4 /* DBHelperAuthentication.swift in Sources */,
 				25B714EC28D0D44C00710FB0 /* AuthenticationField.swift in Sources */,
 				25B714EA28D0D0A800710FB0 /* CustomColor.swift in Sources */,
