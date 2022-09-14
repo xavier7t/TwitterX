@@ -10,8 +10,6 @@ import SwiftUI
 struct LandingPageView: View {
     @State private var showNewPost: Bool = false
     @State private var selection: Tab = .PostView
-    @State private var showSignInDI: Bool = false
-    //@State private var showPostDI: Bool = false
     @EnvironmentObject var vmAuth: AuthenticationViewModel
     enum Tab {
         case PostView
