@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PostView: View {
-    @StateObject var vm = PostViewModel()
+    @EnvironmentObject var vm: PostViewModel
     var body: some View {
         NavigationView {
             if vm.posts.count != 0 {
@@ -22,7 +22,7 @@ struct PostView: View {
                     .navigationTitle("TwitterX")
                 }
                 .refreshable {
-                    vm.loadPosts()
+                    vm.reloadPosts()
                 }
             } else {
                 Text("No post found yet. Feel free to create the first one!")
@@ -31,7 +31,7 @@ struct PostView: View {
             }
         }
         .onAppear {
-            vm.loadPosts()
+            vm.reloadPosts()
         }
     }
 }
@@ -39,5 +39,6 @@ struct PostView: View {
 struct PostView_Previews: PreviewProvider {
     static var previews: some View {
         PostView()
+            .environmentObject(PostViewModel())
     }
 }

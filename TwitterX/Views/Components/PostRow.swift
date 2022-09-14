@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PostRow: View {
-    @StateObject var vm = PostViewModel()
+    @EnvironmentObject var vm: PostViewModel
     let post: Post
     var author: Authentication {
         vm.getPostAuthor(postExternalID: post.externalid)!

@@ -17,12 +17,14 @@ struct TwitterXApp: App {
             
             if ud.bool(forKey: "isLoggedIn") {
                 LandingPageView()
+                    .environmentObject(sharedPostViewModel)
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .onAppear {
                         printFilePath()
                     }
             } else {
                 WelcomeView()
+                    .environmentObject(sharedPostViewModel)
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .onAppear {
                         printFilePath()

@@ -13,7 +13,7 @@ struct NewPostView: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var selectedImages: [PhotosPickerItem] = []
     @State private var description: String = ""
-    @StateObject var vm = NewPostViewModel()
+    @EnvironmentObject var vm: PostViewModel
     
     var body: some View {
         VStack {
@@ -111,5 +111,6 @@ struct NewPostView: View {
 struct NewPostView_Previews: PreviewProvider {
     static var previews: some View {
         NewPostView()
+            .environmentObject(PostViewModel())
     }
 }
