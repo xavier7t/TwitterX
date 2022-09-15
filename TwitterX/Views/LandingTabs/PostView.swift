@@ -30,6 +30,14 @@ struct PostView: View {
             .refreshable {
                 vm.reloadPosts()
             }
+            .toolbar(content: {
+                ToolbarItem(content: {
+                    vm.currentAuthProfileView()
+                        .scaleEffect(0.5)
+                        .padding(.bottom, 5)
+                        .padding(.trailing, 15)
+                })
+            })
         }
         .onAppear {
             vm.reloadPosts()
