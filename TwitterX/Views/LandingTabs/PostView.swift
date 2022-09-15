@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct PostView: View {
-    @EnvironmentObject var vm: PostViewModel
+    @EnvironmentObject var vmPost: PostViewModel
+    @EnvironmentObject var vmAuth: AuthenticationViewModel
     var body: some View {
         NavigationView {
             ScrollView {
-                if vm.posts.count != 0 {
-                    ForEach(vm.posts, id: \.externalid) { post in
+                if vmPost.posts.count != 0 {
+                    ForEach(vmPost.posts, id: \.externalid) { post in
                         Divider()
                         PostRow(post: post)
                             .listRowInsets(EdgeInsets())
@@ -28,11 +29,12 @@ struct PostView: View {
             }
             .scrollIndicators(.never)
             .refreshable {
-                vm.reloadPosts()
+                vmPost.reloadPosts()
             }
             .toolbar(content: {
                 ToolbarItem(content: {
-                    vm.currentAuthProfileView()
+                    
+                    vmPost.currentAuthProfileView()
                         .scaleEffect(0.5)
                         .padding(.bottom, 5)
                         .padding(.trailing, 15)
@@ -40,7 +42,7 @@ struct PostView: View {
             })
         }
         .onAppear {
-            vm.reloadPosts()
+            vmPost.reloadPosts()
         }
     }
 }
