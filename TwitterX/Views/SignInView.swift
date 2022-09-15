@@ -39,7 +39,7 @@ struct SignInView: View {
             VStack(spacing: 14) {
                 Spacer()
                 AuthenticationFieldView(placeholder: "Email or Username", isSecureField: false, textValue: $usernameoremail)
-                AuthenticationFieldView(placeholder: "Confirm you password", isSecureField: true, textValue: $password)
+                AuthenticationFieldView(placeholder: "Password", isSecureField: true, textValue: $password)
                 AuthenticationErrorMessage(errorMsg: vm.errorMessage)
                 Button(action: {
                     vm.processSignInRequest(usernameoremail: usernameoremail, password: password)
