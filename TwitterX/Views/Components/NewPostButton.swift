@@ -2,7 +2,7 @@
 //  NewPostButton.swift
 //  TwitterX
 //
-//  Created by M_2217304 on 9/10/22.
+//  Created by Xavier on 9/10/22.
 //
 
 import SwiftUI
