@@ -34,10 +34,23 @@ struct PostView: View {
             .toolbar(content: {
                 ToolbarItem(content: {
                     
-                    vmPost.currentAuthProfileView()
-                        .scaleEffect(0.5)
-                        .padding(.bottom, 5)
-                        .padding(.trailing, 15)
+                    Menu(content: {
+                        Button(action: {
+                            print("profile tapped")
+                        }, label: {
+                            Text("Profile")
+                        })
+                        Button(action: {
+                            print("log out tapped")
+                        }, label: {
+                            Text("Logout")
+                        })
+                    }, label: {
+                        vmPost.currentAuthProfileView()
+                            .scaleEffect(0.5)
+                            .padding(.bottom, 5)
+                            .padding(.trailing, 15)
+                    })
                 })
             })
         }
