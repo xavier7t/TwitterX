@@ -9,12 +9,35 @@ import SwiftUI
 
 @main
 struct TwitterXApp: App {
-    let persistenceController = PersistenceController.shared
-
+    let persistenceController = DBHelperAuthentication.shared
+    let sharedPostViewModel = PostViewModel()
+    let sharedAuthenticationViewModel = AuthenticationViewModel()
+    let ud = UserDefaults.standard
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            
+            if ud.bool(forKey: "isLoggedIn") {
+                LandingPageView()
+                    .environmentObject(sharedPostViewModel)
+                    .environmentObject(sharedAuthenticationViewModel)
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .onAppear {
+                        printFilePath()
+                    }
+            } else {
+                WelcomeView()
+                    .environmentObject(sharedPostViewModel)
+                    .environmentObject(sharedAuthenticationViewModel)
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .onAppear {
+                        printFilePath()
+                    }
+            }
         }
     }
+}
+
+func printFilePath() {
+    let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
+    print(paths[0])
 }
