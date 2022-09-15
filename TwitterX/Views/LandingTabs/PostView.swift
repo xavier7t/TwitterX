@@ -11,8 +11,8 @@ struct PostView: View {
     @EnvironmentObject var vm: PostViewModel
     var body: some View {
         NavigationView {
-            if vm.posts.count != 0 {
-                ScrollView {
+            ScrollView {
+                if vm.posts.count != 0 {
                     ForEach(vm.posts, id: \.externalid) { post in
                         Divider()
                         PostRow(post: post)
@@ -20,15 +20,15 @@ struct PostView: View {
                     }
                     .listStyle(GroupedListStyle())
                     .navigationTitle("TwitterX")
+                } else {
+                    Text("No post found yet. Feel free to create the first one!")
+                        .foregroundColor(.secondary)
+                        .font(.subheadline)
                 }
-                .scrollIndicators(.never)
-                .refreshable {
-                    vm.reloadPosts()
-                }
-            } else {
-                Text("No post found yet. Feel free to create the first one!")
-                    .foregroundColor(.secondary)
-                    .font(.subheadline)
+            }
+            .scrollIndicators(.never)
+            .refreshable {
+                vm.reloadPosts()
             }
         }
         .onAppear {
