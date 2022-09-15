@@ -55,7 +55,7 @@ struct DynamicIslandViewAuthentication: View {
         }
         .frame(width: expanded ? 350 : 127, height: expanded ? 100 : 39)
         .contentShape(Rectangle())
-        .background(Color.black)
+        .background(colorScheme == .dark ? Color.white : Color.black)
         .clipShape(RoundedRectangle(cornerRadius: 40, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 40)

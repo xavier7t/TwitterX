@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DynamicIslandViewPost: View {
+    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var vmAuth: AuthenticationViewModel
     @EnvironmentObject var vmPost: PostViewModel
     @Binding var expanded: Bool
@@ -27,10 +28,12 @@ struct DynamicIslandViewPost: View {
                 
                 Spacer()
                 
-                Text("Tweet posted!")
-                    .foregroundColor(.white)
-                    .bold()
+                if expanded {
+                    Text("Tweet posted!")
+                        .foregroundColor(.white)
+                        .bold()
                     .font(.caption2)
+                }
                 
                 Spacer()
                 if expanded {
@@ -58,7 +61,7 @@ struct DynamicIslandViewPost: View {
         }
         .frame(width: expanded ? 225 : 127, height: expanded ? 100 : 39)
         .contentShape(Rectangle())
-        .background(Color.black)
+        .background(colorScheme == .dark ? Color.white : Color.black)
         .clipShape(RoundedRectangle(cornerRadius: 40, style: .continuous))
     }
 }

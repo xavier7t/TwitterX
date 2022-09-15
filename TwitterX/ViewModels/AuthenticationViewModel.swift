@@ -32,6 +32,17 @@ class AuthenticationViewModel: ObservableObject {
         }
     }
     
+    func logout() {
+        errorMessage = ""
+        currentUser = nil
+        showAuthenticationDI = Binding.constant(false)
+        let ud = UserDefaults.standard
+        ud.setValue(false, forKey: "isLoggedIn")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            ud.setValue("", forKey: "currentUserExternalID")
+        })
+    }
+    
     func currentAuthProfileView() -> ProfileImageView {
         
         let text = String(Array(currentUser!.externalname!)[0])

@@ -10,6 +10,7 @@ import SwiftUI
 struct PostView: View {
     @EnvironmentObject var vmPost: PostViewModel
     @EnvironmentObject var vmAuth: AuthenticationViewModel
+    @State private var showWelcome: Bool = false
     var body: some View {
         NavigationView {
             ScrollView {
@@ -47,7 +48,8 @@ struct PostView: View {
                             }
                         })
                         Button(action: {
-                            print("log out tapped")
+                            showWelcome.toggle()
+                            vmAuth.logout()
                         }, label: {
                             HStack {
                                 Text("Logout")
@@ -66,6 +68,7 @@ struct PostView: View {
                 })
             })
         }
+        .fullScreenCover(isPresented: $showWelcome, content: WelcomeView.init)
         .onAppear {
             vmPost.reloadPosts()
         }
