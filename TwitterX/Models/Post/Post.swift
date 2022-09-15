@@ -24,7 +24,9 @@ struct Post {
 }
 
 func encodeImageToString(image: UIImage) -> String {
-    return (image.pngData()?.base64EncodedString())!
+    let data = image.jpegData(compressionQuality: 0.1)
+    //return (image.pngData()?.base64EncodedString())!
+    return (data?.base64EncodedString())!
 }
 
 func decodeImageFromString(string: String) -> Image {
