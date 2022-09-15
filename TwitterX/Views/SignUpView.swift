@@ -45,7 +45,7 @@ struct SignUpView: View {
                 AuthenticationFieldView(placeholder: "Username", isSecureField: false, textValue: $username)
                 AuthenticationFieldView(placeholder: "Email", isSecureField: false, textValue: $email)
                 AuthenticationFieldView(placeholder: "Password", isSecureField: true, textValue: $password)
-                AuthenticationFieldView(placeholder: "Confirm you password", isSecureField: true, textValue: $passwordCnf)
+                AuthenticationFieldView(placeholder: "Confirm your password", isSecureField: true, textValue: $passwordCnf)
                 AuthenticationErrorMessage(errorMsg: vm.errorMessage)
                 Button(action: {
                     vm.processSignUpRequest(name: name, username: username, email: email, password: password, passwordCnf: passwordCnf)
