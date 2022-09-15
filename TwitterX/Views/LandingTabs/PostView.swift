@@ -38,12 +38,24 @@ struct PostView: View {
                         Button(action: {
                             print("profile tapped")
                         }, label: {
-                            Text("Profile")
+                            HStack {
+                                Text("Profile")
+                                Spacer()
+                                Image(systemName: "person.circle")
+                                    .foregroundColor(.primary)
+                                    .frame(width: 20, height: 20)
+                            }
                         })
                         Button(action: {
                             print("log out tapped")
                         }, label: {
-                            Text("Logout")
+                            HStack {
+                                Text("Logout")
+                                Spacer()
+                                Image(systemName: "rectangle.portrait.and.arrow.forward")
+                                    .foregroundColor(.primary)
+                                    .frame(width: 20, height: 20)
+                            }
                         })
                     }, label: {
                         vmPost.currentAuthProfileView()
